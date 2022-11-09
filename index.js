@@ -33,7 +33,20 @@ app.post("/itens", function (req, res) {
   // Inserimos o valor recebido na lista
   itens.push(item);
 
+  // Exibimos uma mensagem de sucesso
   res.send("Item criado com sucesso!");
+});
+
+// Endpoint [GET] /itens/:id - READ BY ID (Ler pelo ID)
+app.get("/itens/:id", function (req, res) {
+  // Pegamos o parâmetro de rota ID
+  const id = req.params.id - 1;
+
+  // Acessamos o item pelo índice
+  const item = itens[id];
+
+  // Exibimos o item encontrado
+  res.send(item);
 });
 
 app.listen(3000, function () {
