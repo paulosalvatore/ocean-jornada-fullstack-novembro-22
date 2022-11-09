@@ -20,7 +20,7 @@ const itens = ["Café Pelé", "Café Pilão", "Café Arábico"];
 
 // Endpoint [GET] /itens - READ ALL (Ler todos os itens)
 app.get("/itens", function (req, res) {
-  res.send(itens);
+  res.send(itens.filter(Boolean));
 });
 
 // Endpoint [POST] /itens - CREATE (Criar um item)
