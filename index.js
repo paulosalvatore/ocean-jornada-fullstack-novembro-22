@@ -63,6 +63,18 @@ app.put("/itens/:id", function (req, res) {
   res.send("Item atualizado com sucesso!");
 });
 
+// Endpoint [DELETE] /itens/:id - DELETE BY ID (Remover pelo ID)
+app.delete("/itens/:id", function (req, res) {
+  // Pegamos o parâmetro de rota ID
+  const id = req.params.id - 1;
+
+  // Remove o item da lista
+  delete itens[id];
+
+  // Exibimos uma mensagem de sucesso
+  res.send("Item removido com sucesso!");
+});
+
 app.listen(3000, function () {
   console.log("Servidor rodando em http://localhost:3000");
 });
