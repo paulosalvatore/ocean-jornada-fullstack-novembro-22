@@ -43,14 +43,14 @@ async function main() {
   });
 
   // Endpoint [POST] /itens - CREATE (Criar um item)
-  app.post("/itens", function (req, res) {
+  app.post("/itens", async function (req, res) {
     // console.log(req.body);
 
-    // Pegamos o nome enviado no body
-    const item = req.body.nome;
+    // Pegamos o objeto inteiro enviado no body
+    const item = req.body;
 
-    // Inserimos o valor recebido na lista
-    itens.push(item);
+    // Inserimos o valor recebido na collection
+    await collection.insertOne(item);
 
     // Exibimos uma mensagem de sucesso
     res.send("Item criado com sucesso!");
