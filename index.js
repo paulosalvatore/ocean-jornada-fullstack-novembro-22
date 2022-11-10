@@ -34,8 +34,12 @@ async function main() {
   //             0             1             2
 
   // Endpoint [GET] /itens - READ ALL (Ler todos os itens)
-  app.get("/itens", function (req, res) {
-    res.send(itens.filter(Boolean));
+  app.get("/itens", async function (req, res) {
+    // Leio todos os documentos da collection
+    const documentos = await collection.find().toArray();
+
+    // Envio como resposta para o endpoint
+    res.send(documentos);
   });
 
   // Endpoint [POST] /itens - CREATE (Criar um item)
