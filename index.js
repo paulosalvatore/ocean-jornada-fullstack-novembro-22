@@ -1,7 +1,7 @@
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 
-const url = "mongodb://localhost:27017";
+const url = "mongodb://127.0.0.1:27017";
 const bancoDadosNome = "ocean_jornada_fullstack_novembro_22";
 
 async function main() {
@@ -99,7 +99,7 @@ async function main() {
   });
 
   app.listen(3000, function () {
-    console.log("Servidor rodando em http://localhost:3000");
+    console.log("Servidor rodando em http://127.0.0.1:3000");
   });
 }
 
