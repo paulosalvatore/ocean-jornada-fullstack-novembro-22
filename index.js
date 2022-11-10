@@ -5,6 +5,8 @@ const url = "mongodb://127.0.0.1:27017";
 const bancoDadosNome = "ocean_jornada_fullstack_novembro_22";
 
 async function main() {
+  console.log("Conectando ao banco de dados...");
+
   // Realiza a conexão com o client
   const client = await MongoClient.connect(url);
 
@@ -13,6 +15,8 @@ async function main() {
 
   // Obtém acesso à collection
   const collection = bancoDados.collection("itens");
+
+  console.log("Banco de dados conectado com sucesso!");
 
   const app = express();
 
