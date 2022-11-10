@@ -75,15 +75,15 @@ async function main() {
   });
 
   // Endpoint [PUT] /itens/:id - UPDATE BY ID (Atualizar pelo ID)
-  app.put("/itens/:id", function (req, res) {
+  app.put("/itens/:id", async function (req, res) {
     // Pegamos o parâmetro de rota ID
-    const id = req.params.id - 1;
+    const id = req.params.id;
 
-    // Pegamos o nome enviado no body
-    const item = req.body.nome;
+    // Pegamos o objeto enviado no body
+    const item = req.body;
 
-    // Atualizamos com o novo item, na posição ID da lista de itens
-    itens[id] = item;
+    // Atualizamos o item no banco de dados
+    await collection.updateOne({ _id: new ObjectId(id) }, { $set: item });
 
     res.send("Item atualizado com sucesso!");
   });
