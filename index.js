@@ -56,6 +56,10 @@ async function main() {
     res.send("Item criado com sucesso!");
   });
 
+  // Exercício:
+  // Implementar o Read By ID e o Delete
+  // Dica: new ObjectId(id);
+
   // Endpoint [GET] /itens/:id - READ BY ID (Ler pelo ID)
   app.get("/itens/:id", function (req, res) {
     // Pegamos o parâmetro de rota ID
