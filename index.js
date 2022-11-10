@@ -1,80 +1,98 @@
 const express = require("express");
-const app = express();
+const { MongoClient, ObjectId } = require("mongodb");
 
-// Sinalizamos que estamos usando JSON no Body
-app.use(express.json());
+const url = "mongodb://localhost:27017";
+const bancoDadosNome = "ocean_jornada_fullstack_novembro_22";
 
-// Endpoint principal
-app.get("/", function (req, res) {
-  res.send("Hello World!!!");
-});
+async function main() {
+  // Realiza a conexão com o client
+  const client = await MongoClient.connect(url);
 
-// Endpoint /oi
-app.get("/oi", function (req, res) {
-  res.send("Olá, mundo!");
-});
+  // Obtém acesso ao banco de dados
+  const bancoDados = client.db(bancoDadosNome);
 
-// Lista de informações
-const itens = ["Café Pelé", "Café Pilão", "Café Arábico"];
-//             0             1             2
+  // Obtém acesso à collection
+  const collection = bancoDados.collection("itens");
 
-// Endpoint [GET] /itens - READ ALL (Ler todos os itens)
-app.get("/itens", function (req, res) {
-  res.send(itens.filter(Boolean));
-});
+  const app = express();
 
-// Endpoint [POST] /itens - CREATE (Criar um item)
-app.post("/itens", function (req, res) {
-  // console.log(req.body);
+  // Sinalizamos que estamos usando JSON no Body
+  app.use(express.json());
 
-  // Pegamos o nome enviado no body
-  const item = req.body.nome;
+  // Endpoint principal
+  app.get("/", function (req, res) {
+    res.send("Hello World!!!");
+  });
 
-  // Inserimos o valor recebido na lista
-  itens.push(item);
+  // Endpoint /oi
+  app.get("/oi", function (req, res) {
+    res.send("Olá, mundo!");
+  });
 
-  // Exibimos uma mensagem de sucesso
-  res.send("Item criado com sucesso!");
-});
+  // Lista de informações
+  const itens = ["Café Pelé", "Café Pilão", "Café Arábico"];
+  //             0             1             2
 
-// Endpoint [GET] /itens/:id - READ BY ID (Ler pelo ID)
-app.get("/itens/:id", function (req, res) {
-  // Pegamos o parâmetro de rota ID
-  const id = req.params.id - 1;
+  // Endpoint [GET] /itens - READ ALL (Ler todos os itens)
+  app.get("/itens", function (req, res) {
+    res.send(itens.filter(Boolean));
+  });
 
-  // Acessamos o item pelo índice
-  const item = itens[id];
+  // Endpoint [POST] /itens - CREATE (Criar um item)
+  app.post("/itens", function (req, res) {
+    // console.log(req.body);
 
-  // Exibimos o item encontrado
-  res.send(item);
-});
+    // Pegamos o nome enviado no body
+    const item = req.body.nome;
 
-// Endpoint [PUT] /itens/:id - UPDATE BY ID (Atualizar pelo ID)
-app.put("/itens/:id", function (req, res) {
-  // Pegamos o parâmetro de rota ID
-  const id = req.params.id - 1;
+    // Inserimos o valor recebido na lista
+    itens.push(item);
 
-  // Pegamos o nome enviado no body
-  const item = req.body.nome;
+    // Exibimos uma mensagem de sucesso
+    res.send("Item criado com sucesso!");
+  });
 
-  // Atualizamos com o novo item, na posição ID da lista de itens
-  itens[id] = item;
+  // Endpoint [GET] /itens/:id - READ BY ID (Ler pelo ID)
+  app.get("/itens/:id", function (req, res) {
+    // Pegamos o parâmetro de rota ID
+    const id = req.params.id - 1;
 
-  res.send("Item atualizado com sucesso!");
-});
+    // Acessamos o item pelo índice
+    const item = itens[id];
 
-// Endpoint [DELETE] /itens/:id - DELETE BY ID (Remover pelo ID)
-app.delete("/itens/:id", function (req, res) {
-  // Pegamos o parâmetro de rota ID
-  const id = req.params.id - 1;
+    // Exibimos o item encontrado
+    res.send(item);
+  });
 
-  // Remove o item da lista
-  delete itens[id];
+  // Endpoint [PUT] /itens/:id - UPDATE BY ID (Atualizar pelo ID)
+  app.put("/itens/:id", function (req, res) {
+    // Pegamos o parâmetro de rota ID
+    const id = req.params.id - 1;
 
-  // Exibimos uma mensagem de sucesso
-  res.send("Item removido com sucesso!");
-});
+    // Pegamos o nome enviado no body
+    const item = req.body.nome;
 
-app.listen(3000, function () {
-  console.log("Servidor rodando em http://localhost:3000");
-});
+    // Atualizamos com o novo item, na posição ID da lista de itens
+    itens[id] = item;
+
+    res.send("Item atualizado com sucesso!");
+  });
+
+  // Endpoint [DELETE] /itens/:id - DELETE BY ID (Remover pelo ID)
+  app.delete("/itens/:id", function (req, res) {
+    // Pegamos o parâmetro de rota ID
+    const id = req.params.id - 1;
+
+    // Remove o item da lista
+    delete itens[id];
+
+    // Exibimos uma mensagem de sucesso
+    res.send("Item removido com sucesso!");
+  });
+
+  app.listen(3000, function () {
+    console.log("Servidor rodando em http://localhost:3000");
+  });
+}
+
+main();
