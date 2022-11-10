@@ -93,12 +93,14 @@ async function main() {
   });
 
   // Endpoint [DELETE] /itens/:id - DELETE BY ID (Remover pelo ID)
-  app.delete("/itens/:id", function (req, res) {
+  app.delete("/itens/:id", async function (req, res) {
     // Pegamos o parâmetro de rota ID
-    const id = req.params.id - 1;
+    const id = req.params.id;
 
-    // Remove o item da lista
-    delete itens[id];
+    // Remove o item do banco de dados
+    await collection.deleteOne({
+      _id: new ObjectId(id),
+    });
 
     // Exibimos uma mensagem de sucesso
     res.send("Item removido com sucesso!");
