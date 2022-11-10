@@ -65,12 +65,14 @@ async function main() {
   // Dica: new ObjectId(id);
 
   // Endpoint [GET] /itens/:id - READ BY ID (Ler pelo ID)
-  app.get("/itens/:id", function (req, res) {
+  app.get("/itens/:id", async function (req, res) {
     // Pegamos o parâmetro de rota ID
-    const id = req.params.id - 1;
+    const id = req.params.id;
 
-    // Acessamos o item pelo índice
-    const item = itens[id];
+    // Realizamos uma busca no banco de dados
+    const item = await collection.findOne({
+      _id: new ObjectId(id),
+    });
 
     // Exibimos o item encontrado
     res.send(item);
