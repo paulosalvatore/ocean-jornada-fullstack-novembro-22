@@ -103,7 +103,7 @@ async function main() {
     res.send("Item removido com sucesso!");
   });
 
-  app.listen(3000, function () {
+  app.listen(process.env.PORT || 3000, function () {
     console.log("Servidor rodando em http://127.0.0.1:3000");
   });
 }
