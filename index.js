@@ -2,7 +2,7 @@ const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 
 // const url = "mongodb://127.0.0.1:27017";
-const url = "mongodb+srv://admin:V90K7ehx2krw7OlM@cluster0.gbnr4oi.mongodb.net";
+const url = "mongodb+srv://admin:pFq5JklVgjN9OGZE@cluster0.xr20bcu.mongodb.net";
 const bancoDadosNome = "ocean_jornada_fullstack_novembro_22";
 
 async function main() {
