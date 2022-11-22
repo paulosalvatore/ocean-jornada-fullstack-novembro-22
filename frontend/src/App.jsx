@@ -1,5 +1,8 @@
+import { Route, Routes } from 'react-router-dom'
+
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
+import ReadAll from './components/ReadAll/ReadAll'
 
 import './App.css'
 
@@ -9,7 +12,9 @@ function App() {
       <Header />
 
       <div className="content">
-        Conteúdo da página
+        <Routes>
+          <Route path="/" element={<ReadAll />} />
+        </Routes>
       </div>
 
       <Footer />
