@@ -1,7 +1,9 @@
 import './Footer.css'
 
 function Footer() {
-    return <div className="Footer">Todos os direitos reservados.</div>;
+  const ano = new Date().getFullYear();
+
+  return <div className="Footer">Todos os direitos reservados ~ {ano}.</div>;
 }
 
 export default Footer;
