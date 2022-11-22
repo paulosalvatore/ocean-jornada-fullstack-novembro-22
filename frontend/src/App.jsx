@@ -5,6 +5,10 @@ function App() {
   return (
     <div className="App">
       <Header />
+
+      <div className="content">
+        Conteúdo da página
+      </div>
     </div>
   )
 }
