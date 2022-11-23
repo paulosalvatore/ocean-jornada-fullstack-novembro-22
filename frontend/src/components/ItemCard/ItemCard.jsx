@@ -1,10 +1,12 @@
 import "./ItemCard.css"
 
-function ItemCard() {
+function ItemCard(props) {
+  const item = props.item;
+
   return (
     <div className="ItemCard">
-      <h1>Nome do Item</h1>
-      <img src="https://picsum.photos/200/200" alt="Imagem do Item" />
+      <h1>{item.nome}</h1>
+      <img src={item.imagemUrl} alt={"Imagem do " + item.nome} />
     </div>
   )
 }
