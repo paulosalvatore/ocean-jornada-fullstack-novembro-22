@@ -14,7 +14,6 @@ function ReadAll() {
       imagemUrl: "https://picsum.photos/200/200" 
     }
   ];
-  console.log(itens);
 
   return (
     <div className="ReadAll">
