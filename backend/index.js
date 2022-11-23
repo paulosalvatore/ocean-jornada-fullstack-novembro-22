@@ -1,5 +1,6 @@
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
+const cors = require("cors");
 
 // const url = "mongodb://127.0.0.1:27017";
 const url = "mongodb+srv://admin:V90K7ehx2krw7OlM@cluster0.gbnr4oi.mongodb.net";
@@ -20,6 +21,9 @@ async function main() {
   console.log("Banco de dados conectado com sucesso!");
 
   const app = express();
+
+  // Configuração do CORS
+  app.use(cors());
 
   // Sinalizamos que estamos usando JSON no Body
   app.use(express.json());
