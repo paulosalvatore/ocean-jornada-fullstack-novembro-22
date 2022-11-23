@@ -1,5 +1,7 @@
 import "./ItemCard.css"
 
+// Exercício para amanhã: estilização do ItemCard
+
 function ItemCard(props) {
   const item = props.item;
 
