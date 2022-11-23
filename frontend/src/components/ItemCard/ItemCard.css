@@ -7,6 +7,12 @@
   border-top: 0.4rem solid #00a7e2;
   border-bottom: 0.4rem solid #00a7e2;
   box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+  transition: all 0.2s;
+}
+
+.ItemCard:hover {
+  box-shadow: 2px 3px 20px 6px rgb(32 33 36 / 28%);
+  transform: scale(1.02);
 }
 
 .ItemCard h1 {
