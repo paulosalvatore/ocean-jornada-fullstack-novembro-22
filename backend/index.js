@@ -62,7 +62,7 @@ async function main() {
     await collection.insertOne(item);
 
     // Exibimos uma mensagem de sucesso
-    res.send("Item criado com sucesso!");
+    res.send({ message: "Item criado com sucesso!" });
   });
 
   // Endpoint [GET] /itens/:id - READ BY ID (Ler pelo ID)
@@ -90,7 +90,7 @@ async function main() {
     // Atualizamos o item no banco de dados
     await collection.updateOne({ _id: new ObjectId(id) }, { $set: item });
 
-    res.send("Item atualizado com sucesso!");
+    res.send({ message: "Item atualizado com sucesso!" });
   });
 
   // Endpoint [DELETE] /itens/:id - DELETE BY ID (Remover pelo ID)
@@ -104,7 +104,7 @@ async function main() {
     });
 
     // Exibimos uma mensagem de sucesso
-    res.send("Item removido com sucesso!");
+    res.send({ message: "Item removido com sucesso!" });
   });
 
   app.listen(process.env.PORT || 3000, function () {
