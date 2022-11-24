@@ -17,6 +17,12 @@ function App() {
           <Route path="/" element={<ReadAll />} />
 
           <Route path="/adicionar" element={<Create />} />
+
+          {/* Exercício: Criar uma rota para o ReadById, integrado com o backend */}
+          {/* <Route path="/visualizar/:id" element={<ReadById />} /> */}
+
+          {/* Para pegar o parâmetro de rota no componente, utilizamos (dentro do componente): */}
+          {/* const id = props.match.params.id; */}
         </Routes>
       </div>
 
