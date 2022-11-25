@@ -1,16 +1,17 @@
 import "./Header.css"
 import Brand from "../../assets/brand.svg"
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div className="Header">
-      <a href="/">
+      <Link to="/">
         <img src={Brand} width={32} height={32} alt="Samsung Ocean Logo" />
-      </a>
+      </Link>
 
-      <a href="/">Listar</a>
+      <Link to="/">Listar</Link>
 
-      <a href="/adicionar">Adicionar</a>
+      <Link to="/adicionar">Adicionar</Link>
     </div>
   )
 }
