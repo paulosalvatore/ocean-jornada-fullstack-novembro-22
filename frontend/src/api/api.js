@@ -13,6 +13,9 @@ export const Api = {
     create: function () {
       return this.endpoint() + "/";
     },
+    delete: function (id) {
+      return this.endpoint() + "/" + id;
+    },
   },
 
   // Montar as requisições
@@ -31,6 +34,13 @@ export const Api = {
       headers: new Headers({
         "Content-type": "application/json",
       }),
+    });
+  },
+
+  // DELETE
+  buildApiDeleteRequest: function (url) {
+    return fetch(url, {
+      method: "DELETE",
     });
   },
 };

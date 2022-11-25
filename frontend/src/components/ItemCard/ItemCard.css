@@ -1,4 +1,5 @@
 .ItemCard {
+  position: relative;
   background: #f3f3f3;
   padding: 1.5rem;
   margin: 1rem;
@@ -21,4 +22,18 @@
   padding-left: 1rem;
   margin: 0;
   margin-bottom: 1rem;
+}
+
+.ItemCard:hover .icon-delete {
+  display: initial;
+}
+
+.icon-delete {
+  display: none;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  font-size: 1.5rem;
+  color: #dc3545;
+  cursor: pointer;
 }
